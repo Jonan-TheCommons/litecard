@@ -1,7 +1,9 @@
 import jsforce from "jsforce";
-import { sign } from "jsonwebtoken";
+import jwt from "jsonwebtoken";
 import fetch from "node-fetch";
-import { SF_USER_NAME, SF_CONSUMER_KEY, SF_JWT_SECRET_KEY, SF_BASE_URL } from "./contants.js";
+import { SF_USER_NAME, SF_CONSUMER_KEY, SF_JWT_SECRET_KEY, SF_BASE_URL } from "./constants.js";
+
+const { sign } = jwt;
 
 const sf = async () => {
   const secretKey = SF_JWT_SECRET_KEY.replace(/\\n/g, "\n");

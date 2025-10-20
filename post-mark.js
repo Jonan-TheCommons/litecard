@@ -1,5 +1,5 @@
 import fetch, { Headers } from "node-fetch";
-import { POSTMARK_API_TOKEN } from "./contants.js";
+import { POSTMARK_API_TOKEN } from "./constants.js";
 
 export const sendEmailWithTemplate = async (payload) => {
   const headers = new Headers();

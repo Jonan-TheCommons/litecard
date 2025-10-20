@@ -1,4 +1,4 @@
-import { POSTMARK_TEMPLATE_ID } from "./contants";
+import { POSTMARK_TEMPLATE_ID } from "./constants.js";
 import { sendEmailWithTemplate } from "./post-mark.js";
 import { createPass } from "./lite-card.js";
 import sf from "./sales-force.js";
