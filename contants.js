@@ -1,0 +1,25 @@
+// prod lite card
+// export const LITECARD_BASE_URL = "https://bff-api.enterprise.litecard.io/api/v1";
+// export const LITECARD_TEMPLATE_ID = "AjzPBsNm9mN97kaasImml";
+// export const LITECARD_USERNAME = "thecommons@litecard.com.au";
+// export const LITECARD_PASSWORD = "dCmRyQR0YhYELXi7TKMa$";
+// prod salesforce
+// export const SF_BASE_URL = "https://login.salesforce.com";
+// export const SF_CONSUMER_KEY = "3MVG9G9pzCUSkzZtRsRQm916QLx3R97o3tBbTOpMVXbXWqtlVk.eaL7JjWYO9Cm3vvYg5Whrf8jUp6_T2B3b0";
+// export const SF_USER_NAME = "integrationuser@thecommons.com.au";
+// export const SF_JWT_SECRET_KEY =
+//   "-----BEGIN PRIVATE KEY-----\nMIIEuQIBADANBgkqhkiG9w0BAQEFAASCBKMwggSfAgEAAoIBAQCiVHk/5y4gnH8p\n+cnh73bekGwAf7N4gygmQEtk4Kf5vaIoCJEaKrEr+QC7hmPpRq5nHZVtFpTCQW8i\n8ctSyhyKtf6xKLavv8l4s7gErKU8Hc91Mm6strMENuXmOBGTHly0fbeh71/EGbMQ\nhaOiYZINu7gfpDypdzS4qU5CoyWzuJ10jueIB+d4SGJaigan2w9hHAJ0Gd62H9OB\noHJuN9ZR0MSHyXvpfVBTGHTAx8pjMMvm/onhDsuO+5uFozaB8pdca0zU0r/eAvXf\nZBMJXfonxYzeGz8dQwKQHU3IJlCD4WLOCKDMWp7ghuIXBkVQOM0tT8zMNOecE0JL\nAKKb3kRHAgMBAAECgf42G/JOsBYFc3pFLlNyUbVN0CuFVGEpH+RCMSxFyUeJ96wV\nrBqx84kbHzp0nQIGFYliKyT5N+MI3XGDicA8gyJVxP8guRwsI8GvJOOHVgUTWjHM\n3wKv5OEchoVw4pT5H9BxrsuHLu4Sb9PrA0uIKlMvlg3J05+6Mqy1i7nf0ddqEEIL\nIa9xM7e9WanSjfHJ8wWMiwCdZ1uJBcnzLSBer+iF5Y+lCMcP+47bCO/PXDOk6dwE\nftYW4Bk9Pf4cU1gxq6n0KDbXS3fIEPQXXgxjmX9lF9XQO00pPGjqQMGvTOsxqtYM\ng1ctUiK2sDZOgd/SE0lwHBKN+0+5gUTfpbqTmQKBgQDdoh6c9UBtMw+z4CMYOujv\n2HOwTnSvjPIUtWeGBz47RvNAdLc9i0C8l/ICp1wAC5O1a675SUTjm4dWuQvy0EMu\nrY3un99CiuEXccLu1WfFUkPtABpNVngg+oBvpabtcg9nYc+VEHGxQp8CHiFxczuP\n4206dGg/p80TJ/CzznMV1QKBgQC7gEUa2h3/cgR49b+hZUOxCfaqrG1EWAnF4VOx\nw4jFaXNDc0j6E/S3N18RkIfBVESTsD8A1qdXm26SvaLmIqPVz2bdNmyQGIep9Kq4\n7wSL2bvvJc2ZmS4rIZ/aUlOTlg/kRizgqez9g28Y/LxI4SPqv7IKWaMO1dM0AFAg\nIXBzqwKBgG0Alt3LIOyT+F0XFyuLjZSod/12GJ1eTJEyxr98QHcW5fwFazmxix01\n/aigdvbuuq63T077Yg4vJ9jXGbFKDECgyvVZW4x2kU3efWjJPEgntZCSRF1U8bAG\ng7RlXDvbpQfLazR86e2sPlfkSb5qVhjmWYouRjdIZ+vL8O3900whAoGAEF4lKi/q\nOHdijpCdVuB5JUZCYynELBgnWj/OR5FTKjCHYFb7AuGlFi1ePjFIuIa7qczT4yXZ\n29r0rxig1MgnVy3Qw/TRS07o4Nw73wL2eaLbNggtx3/IuPkpdCyFoTeTUZESr9YF\nmyfTFfJSGWaV9RMg3qhuhIgD9OEmHXft0hsCgYBAIOw57Vq3NmdAY/dQIBqvFQDM\nfcZKvK3V+/zAyfRmbsCXTA4N3A/fj2LdJ+qy9ykCE75+vtm7MTaY4BmsV1EsISuF\nYfRG0uTRgU7Omklohy/nquT/DgwGvjr0TtgpndByMLVpKxmnXmb8RXVXttK90oGk\nmZoTqVPncseW/z1+vg==\n-----END PRIVATE KEY-----\n";
+// dev lite card
+export const LITECARD_BASE_URL = "https://bff-api.demo.litecard.io/api/v1";
+export const LITECARD_TEMPLATE_ID = "habRkXAuGvnIDkc6ug0jo";
+export const LITECARD_USERNAME = "TheCommons-demo@litecard.com.au";
+export const LITECARD_PASSWORD = "oXaWbHdhc1G8PB78MNo$";
+// dev salesforce
+export const SF_BASE_URL = "https://test.salesforce.com";
+export const SF_CONSUMER_KEY = "3MVG9ZUGg10Hh224kO8HuAYGJVGaOyJ7HeVJfWeSysjQhaKvflkT7BRqZitowUMs3d3ddHY9M8nuWztT3FmDq";
+export const SF_USER_NAME = "ida@thecommons.com.au.playground";
+export const SF_JWT_SECRET_KEY =
+  "-----BEGIN PRIVATE KEY-----\nMIIEvgIBADANBgkqhkiG9w0BAQEFAASCBKgwggSkAgEAAoIBAQDWDXcIDtG4+t6v\nBwdS72rIfiOFblvrKgYA4+WhoLsHBGSr7v4R98qk2zdNLY5ElIUqq6tWzDL4yEyv\nmywfK3LcgF8QaGAKDffDkPPV5SXhzw+8oPceSR78DaeQftvJRp2H+7sX4V5aOrZe\nkpImVad6P/4ZDreDDj2BtdWoUkNo4EQM6Hcay5GXo489kRM2/dQVgBcZFBFDrswf\nafE9Oru/cnxOUb2iJKZ+ZFd6G5U9V9BNwCTpBPqjzuo+PHRs/Q+D5GrzsErC+s+B\nVq16JkzAap56Q4RIiYHXH1yxHrY8k7wDAa+Aago5985W3lalyanqweUD6WHvjT+S\nsheHUEExAgMBAAECggEAUa0boVB+R/Y56FFnQwcmGNDA3xYoLsh/N/G92nmJQ/ky\nLMTp35NMmLEpHeLnKVX+pjSREXKjdHiBgnRUVqRulKLLI2igVNXVl6ME17YzSUGI\nQLKu+LhwAT94k9NELD4suAme71LIfOdwVQ/agpQmbqhiXc9WyMQzRf5LQ4n4PNi7\neKty896Vey6WU0KEkNI/qeBLf/0W4X4pNyhCqzs85HEfJmABJt3zyvjr811zuH5U\ngnwwmI0/ceiM8IAIMq98ldIPHHFsAQMeFDuh6S9wCkoVOorQOZvVL4QuX+138xTH\nTwghSqcMBQoMKCG/w5qAqJPWD1ZF7t+kZ+hDmAdQXQKBgQDzHvcWL3JF2KnWAabC\nyBkd79WUX8yurUKklZT/czZg229TnC+/5IskOY/dbJuv1x3UsKxUkY4A9GeQV7jV\n7d2cIxI6Qb81wjyjymkMJpVyJNUBWCunFzyxLZ44+7cEMh0EBrzTrhV9X7b0tIVE\nqQNAmcrESaIA06Q6eDyO7x8wXwKBgQDhZEuSVKm3GFByhxkxGqTJL9o42YUQrz9B\n4rIMQd/T4vpuTaIdHmaiQB0UTYyZeJdljKEgW5Too4S5GvLzd7mBrSR8uztJVKfH\n/bXy7bFLCOUxJT7uatenN/iL6UnYYjBDQ3lXVbhtUkCXmlKu8IS6Lba9b5h0ZO+h\nWNuaV7q4bwKBgQDboZysAR7ltG7xczp4epYeMl0rFkRthP5QewVIpId6hqIS0WVd\noJSGnC24ZfZbqyU60IROPdQgTqsEfgrv0FxEQnakBGM9qIRpn2C45l5Z6KY4+bMt\n1tMwaLqoVdWnR7JowcFyJbEqOv6oIDDIrzrN8GF6Y96jio6xd4+VvLXbVwKBgBxi\nIfYqfTjWcgMKKkz5uviu8v8nvU8Nkpy8bImIniQzuC+9zQV3t5sFEeRlo6gL/JzI\nKd5GSilFtkgNMb0hPZYr9KVUerHQXFSeCZSvBB2b4CjhNNyXTdL8BGuyFB+Qtd0y\nmQw7ej8iFYpB39mx5jT/3rxaWkuGDns2EmmMVLI3AoGBAL4zCyZrd42Ljh3NkVZ4\nLOMjGAYNBEly0f7UIHrormJqREutJyv2ztfmuWo9TDNWWiiD1GC+znHZdDEf/qsp\nxsufXZyH3+Xh2QT/I+sZDbIOOqlSPVmZNu27yZuhNXg7wiHEyGxMJyBrEQa2M+k3\nxvGoF6qOEi8vTOkqz7Zkqygl\n-----END PRIVATE KEY-----\n";
+// postmark
+export const POSTMARK_API_TOKEN = "1021390e-1a2f-47bf-b368-5529425ddf66";
+export const POSTMARK_TEMPLATE_ID = "41885811";
