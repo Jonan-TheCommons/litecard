@@ -15,7 +15,8 @@ const handler = async ({ id, firstName, lastName, email, memberId }) => {
 
   console.log("Pass created", { apple_link, google_link, card_id });
 
-  const result = await sf().sobject("Member__c").update({
+  const conn = await sf();
+  const result = await conn.sobject("Member__c").update({
     Id: id,
     Pass_ID__c: card_id,
   });
