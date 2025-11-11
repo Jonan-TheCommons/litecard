@@ -1,4 +1,7 @@
-const parseCsvLine = (line) => {
+import fs from "node:fs";
+import readline from "node:readline";
+
+export const parseCsvLine = (line) => {
   const out = [];
   let cur = "";
   let inQuotes = false;
@@ -30,6 +33,59 @@ const parseCsvLine = (line) => {
   }
   out.push(cur);
   return out;
+};
+
+const hasBalancedQuotes = (content) => {
+  let inQuotes = false;
+  for (let i = 0; i < content.length; i++) {
+    const ch = content[i];
+    if (ch === '"') {
+      if (inQuotes && content[i + 1] === '"') {
+        i++;
+      } else {
+        inQuotes = !inQuotes;
+      }
+    }
+  }
+  return !inQuotes;
+};
+
+export const streamCsvRows = async function* (filePath) {
+  const stream = fs.createReadStream(filePath, { encoding: "utf-8" });
+  const rl = readline.createInterface({ input: stream, crlfDelay: Infinity });
+
+  let headers = null;
+  let buffer = "";
+
+  for await (const line of rl) {
+    buffer = buffer ? `${buffer}\n${line}` : line;
+    if (!hasBalancedQuotes(buffer)) {
+      continue;
+    }
+
+    if (!headers) {
+      headers = parseCsvLine(buffer).map((h) => h.trim());
+      buffer = "";
+      continue;
+    }
+
+    if (!buffer.trim()) {
+      buffer = "";
+      continue;
+    }
+
+    const cells = parseCsvLine(buffer);
+    const row = {};
+    headers.forEach((h, idx) => {
+      row[h] = (cells[idx] ?? "").trim();
+    });
+    yield row;
+    buffer = "";
+  }
+
+  if (buffer.trim()) {
+    throw new Error("Malformed CSV: unmatched quotes detected near EOF");
+  }
 };
 
 const parseCSV = (content) => {
