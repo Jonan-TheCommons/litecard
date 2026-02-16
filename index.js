@@ -81,7 +81,7 @@ const main = async () => {
             email: user.email,
             memberId: user.memberId,
           },
-          { rowIndex: index }
+          { rowIndex: index },
         );
         successCount += 1;
         recordProgress(progressFile, {
@@ -118,7 +118,7 @@ const main = async () => {
   await Promise.all(tasks);
 
   log(
-    `\nScript ended. total=${totalRows}, successes=${successCount}, failures=${failureCount}, skipped=${skippedRows}, concurrency=${WORKER_CONCURRENCY}`
+    `\nScript ended. total=${totalRows}, successes=${successCount}, failures=${failureCount}, skipped=${skippedRows}, concurrency=${WORKER_CONCURRENCY}`,
   );
 };
 

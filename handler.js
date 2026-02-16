@@ -12,52 +12,51 @@ const logRetry = (phase, rowLabel) => (error, attempt, wait) => {
   });
 };
 
-const handler = async ({ id, firstName, lastName, email, memberId }, context = {}) => {
+const handler = async (payload, context = {}) => {
   const rowLabel = context.rowIndex != null ? `Row ${context.rowIndex + 1}` : "Row ?";
-  const payload = {
-    firstName,
-    lastName,
-    email,
-    memberId,
-  };
+  const requiredFields = ["id", "firstName", "lastName", "email", "memberId"];
+  const missingFields = requiredFields.filter((field) => {
+    const value = payload?.[field];
+    return value == null || (typeof value === "string" && value.trim() === "");
+  });
 
-  const { apple_link, google_link, card_id } = await withRetry(
-    () => createPass(payload),
-    {
-      retries: 3,
-      delayMs: 1000,
-      backoffFactor: 2,
-      onRetry: logRetry("Litecard", rowLabel),
-    }
-  );
+  if (missingFields.length > 0) {
+    throw new Error(`${rowLabel} missing required payload fields: ${missingFields.join(", ")}`);
+  }
+
+  const { id, email } = payload;
+
+  const { apple_link, google_link, card_id } = await withRetry(() => createPass({ ...payload, id: undefined }), {
+    retries: 3,
+    delayMs: 1000,
+    backoffFactor: 2,
+    onRetry: logRetry("Litecard", rowLabel),
+  });
 
   log(`${rowLabel} pass created`, { apple_link, google_link, card_id });
 
-  if (id) {
-    const conn = await sf();
-    const result = await withRetry(
-      () =>
-        conn.sobject("Member__c").update({
-          Id: id,
-          Pass_ID__c: card_id,
-        }),
-      {
-        retries: 2,
-        delayMs: 750,
-        backoffFactor: 2,
-        onRetry: logRetry("Salesforce update", rowLabel),
-      }
-    );
+  const conn = await sf();
+  const result = await withRetry(
+    async () => {
+      const res = await conn.sobject("Contact").update({
+        Id: id,
+        Litecard_Pass_ID__c: card_id,
+      });
 
-    log(`${rowLabel} Salesforce updated`, result);
+      return res;
+    },
+    {
+      retries: 2,
+      delayMs: 750,
+      backoffFactor: 2,
+      onRetry: logRetry("Salesforce update", rowLabel),
+    },
+  );
 
-    if (!result.success) {
-      throw new Error("Failed to update Salesforce record");
-    }
-  }
+  log(`${rowLabel} Salesforce updated`, result);
 
-  if (!email) {
-    throw new Error("Missing email address");
+  if (!result.success) {
+    throw new Error("Failed to update Salesforce record");
   }
 
   const emailResponse = await withRetry(
@@ -76,7 +75,7 @@ const handler = async ({ id, firstName, lastName, email, memberId }, context = {
       delayMs: 1000,
       backoffFactor: 2,
       onRetry: logRetry("Postmark", rowLabel),
-    }
+    },
   );
 
   log(`${rowLabel} email sent`, { emailResponse });
