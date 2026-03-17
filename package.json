@@ -1,18 +1,23 @@
 {
   "name": "litecard",
   "version": "1.0.0",
-  "description": "",
-  "main": "index.js",
+  "private": true,
+  "type": "module",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "dev": "next dev",
+    "build": "next build",
+    "start": "next start",
+    "legacy:csv": "node index.js"
   },
-  "keywords": [],
-  "author": "",
-  "license": "ISC",
   "dependencies": {
     "jsforce": "^3.10.8",
     "jsonwebtoken": "^9.0.2",
-    "node-fetch": "^3.3.2"
+    "next": "^15.0.0",
+    "node-fetch": "^3.3.2",
+    "react": "^19.0.0",
+    "react-dom": "^19.0.0"
   },
-  "type": "module"
+  "devDependencies": {
+    "@types/react": "^19.2.14"
+  }
 }
