@@ -1,5 +1,5 @@
 import { NextResponse } from "next/server";
-import { sanitizeBatchRecords, ValidationError } from "../../../../lib/shared/records.js";
+import { REQUIRED_FIELDS, sanitizeBatchRecords, ValidationError } from "../../../../lib/shared/records.js";
 import { getServerConfig } from "../../../../lib/server/env.js";
 import { log } from "../../../../lib/server/log.js";
 import { processBatch } from "../../../../lib/server/process-batch.js";
@@ -39,6 +39,16 @@ const parseJsonBody = async (request) => {
     throw new ValidationError("Request body must be valid JSON.");
   }
 };
+
+export async function GET() {
+  const { maxBatchSize, workerConcurrency } = getServerConfig();
+
+  return NextResponse.json({
+    maxBatchSize,
+    requiredFields: REQUIRED_FIELDS,
+    workerConcurrency,
+  });
+}
 
 export async function POST(request) {
   try {

@@ -6,6 +6,7 @@ This project has been migrated from a CSV-driven Node script into a Next.js web 
 
 - The primary workflow now runs through a browser-based admin UI.
 - Admin users can enter one or many members in a single batch.
+- Admin users can also upload the legacy CSV format directly from the UI. Large CSV uploads are split into sequential batches based on `MAX_BATCH_SIZE`.
 - The backend still executes the original sequence for each member:
   1. Create the Litecard pass
   2. Update the Salesforce contact

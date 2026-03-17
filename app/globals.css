@@ -335,6 +335,76 @@ input {
   max-width: 54ch;
 }
 
+.intake-tabs {
+  display: inline-flex;
+  gap: 8px;
+  padding: 6px;
+  border-radius: 999px;
+  background: rgba(31, 36, 25, 0.06);
+  align-self: flex-start;
+}
+
+.intake-tab {
+  padding: 10px 16px;
+  border: 1px solid transparent;
+  border-radius: 999px;
+  background: transparent;
+  color: var(--muted);
+}
+
+.intake-tab-active {
+  background: rgba(255, 255, 255, 0.92);
+  color: var(--text);
+  border-color: rgba(31, 36, 25, 0.08);
+  box-shadow: 0 10px 24px rgba(72, 58, 30, 0.1);
+}
+
+.tab-panel {
+  display: grid;
+  gap: 18px;
+}
+
+.csv-upload-panel {
+  display: grid;
+  gap: 14px;
+  padding: 18px;
+  border-radius: 20px;
+  border: 1px solid var(--line);
+  background: linear-gradient(180deg, rgba(31, 93, 80, 0.08), rgba(255, 255, 255, 0.56));
+}
+
+.csv-upload-header {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-between;
+  gap: 14px;
+}
+
+.csv-upload-actions {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 10px;
+  align-items: flex-start;
+}
+
+.csv-upload-summary {
+  display: grid;
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  gap: 12px;
+}
+
+.file-picker {
+  position: relative;
+  overflow: hidden;
+}
+
+.file-picker input {
+  position: absolute;
+  inset: 0;
+  opacity: 0;
+  cursor: pointer;
+}
+
 .record-list {
   display: grid;
   gap: 14px;
@@ -424,10 +494,37 @@ input {
   border-color: rgba(155, 44, 36, 0.2);
 }
 
+.status-info {
+  color: var(--accent-strong);
+  background: rgba(31, 93, 80, 0.1);
+  border-color: rgba(31, 93, 80, 0.18);
+}
+
 .status-success {
   color: var(--success);
   background: var(--success-soft);
   border-color: rgba(28, 107, 70, 0.2);
+}
+
+.status-banner strong {
+  display: block;
+  margin-bottom: 4px;
+}
+
+.progress-track {
+  margin-top: 12px;
+  height: 8px;
+  border-radius: 999px;
+  background: rgba(31, 93, 80, 0.12);
+  overflow: hidden;
+}
+
+.progress-fill {
+  display: block;
+  height: 100%;
+  border-radius: inherit;
+  background: linear-gradient(135deg, var(--accent), var(--accent-strong));
+  transition: width 180ms ease;
 }
 
 .results-grid {
@@ -465,6 +562,11 @@ input {
 .results-modal-header .helper-copy {
   margin-top: 8px;
   max-width: 60ch;
+}
+
+.results-context-copy {
+  margin-top: 8px;
+  color: var(--muted);
 }
 
 .results-modal-close {
@@ -582,7 +684,8 @@ input {
     grid-template-columns: 1fr;
   }
 
-  .results-summary {
+  .results-summary,
+  .csv-upload-summary {
     grid-template-columns: repeat(2, minmax(0, 1fr));
   }
 }
@@ -600,8 +703,15 @@ input {
   }
 
   .field-grid,
-  .results-summary {
+  .results-summary,
+  .csv-upload-summary {
     grid-template-columns: 1fr;
+  }
+
+  .intake-tabs {
+    width: 100%;
+    display: grid;
+    grid-template-columns: 1fr 1fr;
   }
 
   .results-modal-backdrop {
