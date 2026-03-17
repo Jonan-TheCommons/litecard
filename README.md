@@ -40,6 +40,10 @@ npm run dev
 
 Open [http://localhost:3000](http://localhost:3000).
 
+## AWS Amplify
+
+If you deploy this app with AWS Amplify SSR, the build must write the required server environment variables into `.env.production` before `npm run build`. The repo-level `amplify.yml` already does this for the Litecard, Salesforce, Postmark, and batch settings used by the server runtime.
+
 ## Notes
 
 - Protect the admin app at the hosting layer before exposing it publicly.
