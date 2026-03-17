@@ -41,5 +41,5 @@ Open [http://localhost:3000](http://localhost:3000).
 
 ## Notes
 
-- The current implementation assumes trusted internal access to the admin screen. No authentication layer has been added yet.
+- Protect the admin app at the hosting layer before exposing it publicly.
 - Server-side logs are written to the `logs/` directory.

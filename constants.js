@@ -1,3 +1,7 @@
+if (typeof window !== "undefined" || typeof document !== "undefined") {
+  throw new Error("constants.js is server-only and must not be imported from browser code.");
+}
+
 const getRequiredEnv = (key) => {
   const value = process.env[key];
 
