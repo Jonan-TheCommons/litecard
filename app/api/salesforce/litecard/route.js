@@ -1,6 +1,6 @@
 import { NextResponse } from "next/server";
 import { createPass } from "../../../../lib/server/litecard.js";
-import { sendLitecardEmailWithRetry } from "../../../../lib/server/litecard-email.js";
+import { sendSalesforceLitecardEmailsWithRetry } from "../../../../lib/server/litecard-email.js";
 import { getServerConfig } from "../../../../lib/server/env.js";
 import { log } from "../../../../lib/server/log.js";
 import { withRetry } from "../../../../lib/server/retry.js";
@@ -10,11 +10,6 @@ export const runtime = "nodejs";
 export const dynamic = "force-dynamic";
 
 const EMAIL_PATTERN = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
-const DEFAULT_TEMPLATE_MODEL = {
-  setpasswordlink: "https://members.thecommons.com.au",
-  appstorelink: "https://apps.apple.com/us/app/the-commons/id1244368963",
-  playstorelink: "https://play.google.com/store/apps/details?id=anterior.com.thecommon",
-};
 
 class UnauthorizedError extends Error {
   constructor(message = "Unauthorized request.") {
@@ -80,9 +75,7 @@ const validateRequestPayload = (body) => {
     ["email", "email"],
     ["memberId", "member_id"],
   ];
-  const missingFields = requiredFields
-    .filter(([key]) => payload[key] === "")
-    .map(([, field]) => field);
+  const missingFields = requiredFields.filter(([key]) => payload[key] === "").map(([, field]) => field);
 
   if (missingFields.length > 0) {
     throw new ValidationError(`Missing required fields: ${missingFields.join(", ")}`);
@@ -127,15 +120,10 @@ export async function POST(request) {
       email: payload.email,
     });
 
-    await sendLitecardEmailWithRetry(
+    await sendSalesforceLitecardEmailsWithRetry(
       {
         email: payload.email,
-        templateModel: {
-          ...DEFAULT_TEMPLATE_MODEL,
-          litecard_apple_url: pass.appleLink,
-          litecard_google_url: pass.googleLink,
-          litecard_download_url: pass.downloadId,
-        },
+        pass,
       },
       { label },
     );
@@ -145,8 +133,7 @@ export async function POST(request) {
       statusCode: 200,
     });
   } catch (error) {
-    const statusCode =
-      error instanceof UnauthorizedError ? 401 : error instanceof ValidationError ? 400 : 500;
+    const statusCode = error instanceof UnauthorizedError ? 401 : error instanceof ValidationError ? 400 : 500;
     const message =
       error instanceof UnauthorizedError || error instanceof ValidationError
         ? error.message

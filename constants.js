@@ -28,4 +28,6 @@ export const SF_USER_NAME = getRequiredEnv("SF_USER_NAME");
 export const SF_JWT_SECRET_KEY = getRequiredEnv("SF_JWT_SECRET_KEY");
 
 export const POSTMARK_API_TOKEN = getRequiredEnv("POSTMARK_API_TOKEN");
-export const POSTMARK_TEMPLATE_ID = getRequiredEnv("POSTMARK_TEMPLATE_ID");
+export const POSTMARK_LOYALTY_TEMPLATE_ID = getRequiredEnv("POSTMARK_LOYALTY_TEMPLATE_ID");
+export const POSTMARK_WELCOME_TEMPLATE_ID = getOptionalEnv("POSTMARK_WELCOME_TEMPLATE_ID", "");
+export const POSTMARK_TEMPLATE_ID = POSTMARK_LOYALTY_TEMPLATE_ID;

@@ -27,13 +27,14 @@ Copy `.env.example` to `.env.local` and fill in the integration credentials.
 - `SF_JWT_SECRET_KEY`
 - `SF_WEBHOOK_SECRET`
 - `POSTMARK_API_TOKEN`
-- `POSTMARK_TEMPLATE_ID`
+- `POSTMARK_LOYALTY_TEMPLATE_ID`
+- `POSTMARK_WELCOME_TEMPLATE_ID`
 - `WORKER_CONCURRENCY`
 - `MAX_BATCH_SIZE`
 
 ## Salesforce Litecard API
 
-Use `POST /api/salesforce/litecard` for the Salesforce-triggered flow that only creates the Litecard pass and sends the Postmark notification.
+Use `POST /api/salesforce/litecard` for the Salesforce-triggered flow that creates the Litecard pass and sends the Postmark welcome and loyalty emails.
 
 - Required headers: `Content-Type: application/json` and either `Authorization: Bearer <SF_WEBHOOK_SECRET>` or `x-api-key: <SF_WEBHOOK_SECRET>`
 - Required body fields: `first_name`, `last_name`, `email`, `member_id`
