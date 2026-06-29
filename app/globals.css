@@ -615,6 +615,11 @@ input {
   background: var(--danger-soft);
 }
 
+.chip-info {
+  color: var(--accent-strong);
+  background: var(--accent-soft);
+}
+
 .result-meta {
   display: flex;
   flex-wrap: wrap;
