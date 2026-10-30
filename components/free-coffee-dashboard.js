@@ -719,7 +719,7 @@ export default function FreeCoffeeDashboard() {
                           <span>
                             {result.output.passCreated
                               ? `Card ID: ${result.output.pass.cardId}`
-                              : `Pass ID: ${result.output.pass.id}`}
+                              : `Pass ID: ${result.output.pass.cardId}`}
                           </span>
                           <span>Contact ID: {result.input.id}</span>
                           <span>Member ID: {result.input.memberId}</span>
